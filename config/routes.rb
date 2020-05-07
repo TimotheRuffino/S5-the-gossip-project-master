@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   resources :gossips
   resources :comments
 
+  resources :sessions, only: [:new, :create, :destroy]
+
   
-  resources :users
+  resources :users, only: [:show, :new, :create]
   resources :welcome, only: [:index]
   
   resources :contact, only: [:index]

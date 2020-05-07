@@ -10,10 +10,12 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
     
-    <a class="nav-item nav-link active" href="<%=gossips_path %>">Liste des potins <span class="sr-only">(current)</span></a>
-    <a class="nav-item nav-link active" href="<%=new_gossip_path %>">Créer un potin <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="<%=gossips_path %>">Liste des potins <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="<%=new_gossip_path %>">Créer un potin <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link active" href="<%=team_index_path %>">Team <span class="sr-only">(current)</span></a>
-<a class="nav-item nav-link active" href="<%=contact_index_path %>">Contact <span class="sr-only">(current)</span></a>     
+      <a class="nav-item nav-link active" href="<%=contact_index_path %>">Contact <span class="sr-only">(current)</span></a>  
+      <a class="nav-item nav-link active" href="<%=new_user_path %>">Créer un compte <span class="sr-only">(current)</span></a> 
+      <a class="nav-item nav-link active" href="<%=new_session_path %>">Se connecter <span class="sr-only">(current)</span></a>   
     </div>
   </div>
 </nav>
@@ -32,32 +34,29 @@
 <% end %>
   </div>
   
-<div class="row justify-content-center text-primary"><h1> Créer un potin</h1></div>
-<br />
+ <div class="container text-center mt-5">
+      <h1 style="color: #053557">Créer ton potin &#128520;</h1>
+      <div class="m-5 px-5">
+        <%= form_tag url_for(action: 'create'), method: "post" do %>
 
 
+          <div class="form-group">
+          <%= text_field_tag 'title', @gossip.title, class: 'form-control', placeholder: 'Titre' %>
+          </div> 
 
-    <%= form_tag url_for(action: 'create'), method: "gossips" do %>
-<input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %> >      
+          <div class="form-group">
+          <%= text_area_tag 'content', @gossip.content, class: 'form-control', placeholder: 'Contenu' %>
+          </div> 
 
-      <h4><div class="row justify-content-center"><%= label_tag 'Title' %></div></h4>
-      <div class="row justify-content-center"><%= text_field_tag 'title', @gossip.title %></div>
-      <br /> <br />
-
-      <h4><div class="row justify-content-center"><%= label_tag 'Content' %></div></h4>
-      <div class="row justify-content-center"><%= text_area_tag 'content', @gossip.content %></div>
-      <br /> <br />
- 
-      <h4><div class="row justify-content-center"><%= label_tag 'Author' %></div></h4>
-      <div class="row justify-content-center"><%= text_field_tag 'author', @gossip.user %></div>
-      <br /> <br />
-
-
-<div class="row justify-content-center "><%= submit_tag "Envoyer" %></div>
-      
-
-    <% end %>
-
+          <div class="btn-toolbar mx-3" role="toolbar" aria-label="Toolbar with button groups">
+    
+            <div class="btn-group mr-2" role="group">
+              <%= submit_tag "Créer", class: "btn btn-primary mx-1" %> 
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
     <!-- ... -->
   </body>
 </html>
