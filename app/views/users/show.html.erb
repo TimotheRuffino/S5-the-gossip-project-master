@@ -1,0 +1,45 @@
+<html>
+<head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="<%=root_path%>">The Gossip Project</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+    
+    <a class="nav-item nav-link active" href="<%=gossips_path %>">Liste des potins <span class="sr-only">(current)</span></a>
+    <a class="nav-item nav-link active" href="<%=new_gossip_path %>">Créer un potin <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="<%=team_index_path %>">Team <span class="sr-only">(current)</span></a>
+<a class="nav-item nav-link active" href="<%=contact_index_path %>">Contact <span class="sr-only">(current)</span></a>     
+    </div>
+  </div>
+</nav>
+</head>
+
+<body>
+    <% user = User.find(params['id']) %>
+
+
+<div class="row justify-content-center">
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="https://pixabay.com/get/52e4dc4b4e57ab14f6da8c7dda35367b1d37d6e35755754b_1280.png" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title text-center">Infos utilisateurs</h5>
+<p class="card-text text-center"><%= user.first_name%> <%= user.last_name%></p>  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item text-center"><%= user.email%></li>
+    <li class="list-group-item"><%= user.description%></li>
+    <li class="list-group-item text-center"><%= user.age%></li>
+
+
+    <li class="list-group-item text-center"> <%= user.city.name%> <br/>
+    <%= link_to "Infos sur la ville", city_path(user.city.id) %>
+    </li>
+
+</div>
+</div> 
+      
+  </body>
+    
+</html>

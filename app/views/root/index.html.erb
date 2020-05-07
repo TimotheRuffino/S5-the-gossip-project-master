@@ -1,0 +1,43 @@
+
+<html>
+<head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="<%=root_path%>">The Gossip Project</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+    
+    <a class="nav-item nav-link active" href="<%=gossips_path %>">Liste des potins <span class="sr-only">(current)</span></a>
+    <a class="nav-item nav-link active" href="<%=new_gossip_path %>">Créer un potin <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="<%=team_index_path %>">Team <span class="sr-only">(current)</span></a>
+<a class="nav-item nav-link active" href="<%=contact_index_path %>">Contact <span class="sr-only">(current)</span></a>     
+    </div>
+  </div>
+</nav>
+</head>
+
+<body>
+
+<div class="jumbotron">
+  <h1 class="display-4">Bienvenue !</h1>
+  <p class="lead">Ce site a été créé pour classer tous tes potins de petit curieux &#128521; Amuse-toi bien !</p>
+  <hr class="my-4">
+  <p>Tu veux créer tes propres potins ?</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="<%=new_gossip_path %>" role="button">Clique ici &#128527;</a>
+  </p>
+  <p>Tu veux accéder à ta liste de potins ?</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="<%=gossips_path %>" role="button">Clique ici &#128526;</a>
+  </p>
+  </div>
+  
+
+</body>
+
+
+
+
+</html>

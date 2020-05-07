@@ -1,0 +1,85 @@
+<html>
+<head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="<%=root_path%>">The Gossip Project</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+    
+    <a class="nav-item nav-link active" href="<%=gossips_path %>">Liste des potins <span class="sr-only">(current)</span></a>
+    <a class="nav-item nav-link active" href="<%=new_gossip_path %>">Créer un potin <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="<%=team_index_path %>">Team <span class="sr-only">(current)</span></a>
+<a class="nav-item nav-link active" href="<%=contact_index_path %>">Contact <span class="sr-only">(current)</span></a>     
+    </div>
+  </div>
+</nav>
+</head>
+
+<body>
+   <div class="panel panel-default">
+    <div class="panel-heading text-center"> S'inscrire</div>
+      <div class="panel-body row justify-content-center">
+        <%= form_for @user, class:'form-horizontal' do |f|%>
+          
+          <div class="form-group">
+            <%= f.label :last_name, "Nom", class: 'col-md-4 control-label' %>
+              <div class="col-md-6">
+                <%= f.text_field :last_name, class: 'form-control' %>
+              </div>
+          </div>
+
+
+          <div class="form-group">
+            <%= f.label :first_name, "Prénom", class: 'col-md-4 control-label' %>
+              <div class="col-md-6">
+                <%= f.text_field :first_name, class: 'form-control' %>
+              </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :email, "Email", class: 'col-md-4 control-label' %>
+              <div class="col-md-6">
+                <%= f.email_field :email, class: 'form-control' %>
+              </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :city, "Ville", class: 'col-md-4 control-label' %>
+              <div class="col-md-6">
+                <%= f.text_field :city, class: 'form-control' %>
+              </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password, "Password", class: 'col-md-4 control-label' %>
+              <div class="col-md-6">
+                <%= f.password_field :password, class: 'form-control' %>
+              </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password_confirmation, "Confirmer password", class: 'col-md-4 control-label' %>
+              <div class="col-md-6">
+                <%= f.password_field :password_confirmation, class: 'form-control' %>
+              </div>
+          </div>
+
+
+<div class="form-group">
+  <div class="col-md-6 col-md-offset-4">
+    <button type="submit" class="btn btn-primary"> 
+      S'inscrire 
+    </button>
+  </div>
+</div>
+       
+
+        <% end %>
+      </div>
+  </div>  
+      
+  </body>
+    
+</html>

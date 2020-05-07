@@ -1,0 +1,63 @@
+<html>
+
+<head>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="<%=root_path%>">The Gossip Project</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+    
+    <a class="nav-item nav-link active" href="<%=gossips_path %>">Liste des potins <span class="sr-only">(current)</span></a>
+    <a class="nav-item nav-link active" href="<%=new_gossip_path %>">Créer un potin <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="<%=team_index_path %>">Team <span class="sr-only">(current)</span></a>
+<a class="nav-item nav-link active" href="<%=contact_index_path %>">Contact <span class="sr-only">(current)</span></a>     
+    </div>
+  </div>
+</nav>
+</head>
+  <body>
+
+
+<% if @gossip.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+    <ul>
+      <% @gossip.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+       
+<% end %>
+<% end %>
+  </div>
+  
+<div class="row justify-content-center text-primary"><h1> Créer un potin</h1></div>
+<br />
+
+
+
+    <%= form_tag url_for(action: 'create'), method: "gossips" do %>
+<input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %> >      
+
+      <h4><div class="row justify-content-center"><%= label_tag 'Title' %></div></h4>
+      <div class="row justify-content-center"><%= text_field_tag 'title', @gossip.title %></div>
+      <br /> <br />
+
+      <h4><div class="row justify-content-center"><%= label_tag 'Content' %></div></h4>
+      <div class="row justify-content-center"><%= text_area_tag 'content', @gossip.content %></div>
+      <br /> <br />
+ 
+      <h4><div class="row justify-content-center"><%= label_tag 'Author' %></div></h4>
+      <div class="row justify-content-center"><%= text_field_tag 'author', @gossip.user %></div>
+      <br /> <br />
+
+
+<div class="row justify-content-center "><%= submit_tag "Envoyer" %></div>
+      
+
+    <% end %>
+
+    <!-- ... -->
+  </body>
+</html>

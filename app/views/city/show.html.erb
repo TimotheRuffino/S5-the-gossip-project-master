@@ -1,0 +1,49 @@
+<html>
+<head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="<%=root_path%>">The Gossip Project</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+    
+    <a class="nav-item nav-link active" href="<%=gossips_path %>">Liste des potins <span class="sr-only">(current)</span></a>
+    <a class="nav-item nav-link active" href="<%=new_gossip_path %>">Créer un potin <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="<%=team_index_path %>">Team <span class="sr-only">(current)</span></a>
+<a class="nav-item nav-link active" href="<%=contact_index_path %>">Contact <span class="sr-only">(current)</span></a>     
+    </div>
+  </div>
+</nav>
+</head>
+
+<body>
+    <div class="container py-5 text-center">
+      <% city = City.find(params['id']) %>
+      <h3 class="pb-3">Tous les gossips de <%= city.name %>  !</h3>
+      <br/>
+
+      <div class="card-deck row justify-content-center">
+        <% city.users.each do |user| %>
+          <% user.gossips.each do |gossip| %>
+            <div class="col-lg-8 col-md-12 mb-3">
+              <div class="card text-left">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <%= link_to "#{gossip.title}", gossip_path(gossip.id) %>
+                  </h5>
+                  <p class="card-text"><%= gossip.content %></p>
+                </div>
+                <div class="card-footer">
+                  <p class="small text-right text-muted">de <%= link_to "#{gossip.user.first_name}", user_path(gossip.user.id) %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+    </div>
+</body>
+    
+</html>

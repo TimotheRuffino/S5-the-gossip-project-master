@@ -1,0 +1,57 @@
+
+<html>
+<head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="<%=root_path%>">The Gossip Project</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+    
+    <a class="nav-item nav-link active" href="<%=gossips_path %>">Liste des potins <span class="sr-only">(current)</span></a>
+    <a class="nav-item nav-link active" href="<%=new_gossip_path %>">Créer un potin <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="<%=team_index_path %>">Team <span class="sr-only">(current)</span></a>
+<a class="nav-item nav-link active" href="<%=contact_index_path %>">Contact <span class="sr-only">(current)</span></a>  
+<a class="nav-item nav-link active" href="<%=new_user_path %>">Créer un compte <span class="sr-only">(current)</span></a>  
+
+
+
+    </div>
+  </div>
+</nav>
+</head>
+
+<body>
+
+<% if params[:commit] == "Envoyer" %>
+     <p class="container alert alert-success d-flex justify-content-center" role="alert">Ton potin a été enregistré !</p>
+  <% end %>
+
+<div class="container py-3 text-center">
+  <a class= text-center><h1>Liste des potins </h1></a>
+
+</div>
+
+
+<div class="row justify-content-center">
+  <div class="col-lg-4 col-md-6 mb-3">
+    <div class="card">
+    <% @gossip.each do |gossip| %>
+      <div class="card-body"> 
+        <h5 class="card-title"><%= gossip.user.first_name %></h5>
+        <p class="card-text">titre : <%= gossip.title %></p>
+  <button type="button" class="btn btn-outline-primary"><%= link_to "Voir le potin", gossip_path(gossip.id) %></button>
+      </div>
+      <% end %>
+    </div>
+    
+  </div>
+
+
+</body>
+
+
+
+
+</html>

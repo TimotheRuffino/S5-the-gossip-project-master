@@ -1,0 +1,56 @@
+<!doctype html>
+
+<html>
+<head>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="<%=gossips_path %>">The Gossip Project</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+    <a class="nav-item nav-link active" href="<%=root_path%>">Accueil <span class="sr-only">(current)</span></a>
+    <a class="nav-item nav-link active" href="<%=welcome_index_path %>">Welcome <span class="sr-only">(current)</span></a> 
+    <a class="nav-item nav-link active" href="<%=new_gossip_path %>">Créer un potin <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="<%=team_index_path %>">Team <span class="sr-only">(current)</span></a>
+<a class="nav-item nav-link active" href="<%=contact_index_path %>">Contact <span class="sr-only">(current)</span></a>     
+    </div>
+  </div>
+</nav>
+</head>
+  
+ <body>
+ <br>
+
+    <h2>Voici la page du potin n°<%= params['id']%> </h2>
+    <p> Le contenu du potin : <%= @gossip.content%> </p>
+    <p> L'auteur du potin : <%= @gossip.user.first_name %> 
+    <br>
+    <br>
+    
+    
+    <i><%= link_to "--> En savoir plus sur l'auteur", user_path(@gossip.user.id) %></i></p>
+    <i><%= link_to "--> En savoir plus sur la ville", city_path(@gossip.user.city.id) %>, <%= @gossip.user.city.name %></i></p> 
+  
+    <br> 
+    <a href="<%= edit_gossip_path(@gossip.id) %>" class="btn btn-warning text-white mx-1">Modifier le potin</a>
+    
+    <a href="<%= gossip_path(@gossip.id) %>" class="btn btn-danger mx-1" data-confirm="Êtes-vous sûrs de vouloir le supprimer ?" data-method="DELETE">Supprimer le potin</a>
+
+<br>
+<br>
+
+      <%= form_tag comment_path(gossip: @gossip), method: "post" do %>
+          <div class="form-group">
+            <%= label_tag 'Ajouter un commentaire :' %>
+            <%= text_area_tag 'content', @comment, {class: 'form-control', rows: 5, placeholder: "Saisissez votre commentaire..."} %>
+          </div>
+          <div class="row justify-content-center">
+            <%= submit_tag "Valider", {class: 'btn btn-primary'} %>
+          </div>
+        <% end %>
+
+  </body>
+  </body>
+</html>
